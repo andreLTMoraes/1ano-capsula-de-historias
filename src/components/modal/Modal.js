@@ -27,14 +27,19 @@ export default function Modal({
     closeModal = () => {}
 }) {
     const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef, closeModal);
-    const [time, setTime] = useState('0')
-    const [now, setNow] = useState('0')
+    useOutsideAlerter(wrapperRef, closeModal)
+    const player = useRef(null)
+    const [play, setPlay] = useState(false)
     const [selectedHistory, setSelectedHistory] = useState(0)
     
     const gotoHistory = (time, idx) => {
-        setTime(time)
+        player.current.seekTo(time, "seconds")
         setSelectedHistory(idx)
+    }
+
+    const gotoBegin = () => {
+        setPlay(true)
+        player.current.seekTo(0, "seconds")
     }
 
     const handleList = (time) => {
@@ -69,20 +74,14 @@ export default function Modal({
                     </S.CardHeader>
                     <S.VideoConteiner>
                         <ReactPlayer
-                            url={`${mock.url}&t=${time}`}
+                            ref={player}
+                            url={`${mock.url}`}
                             controls={true}
                             width="83%"
                             height="90%"
-                            playing={true}
+                            playing={play}
                             onProgress={(oP) => handleList(Math.round(oP.playedSeconds))}
-                            config={{
-                                youtube: {
-                                    embedOptions: {
-                                        autoplay: 1,
-                                        start: 0
-                                    }
-                                }
-                            }}
+                            onReady={gotoBegin}
                         />
                     </S.VideoConteiner>
                 </S.HistoryContent>
