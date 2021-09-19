@@ -2,12 +2,16 @@ import styled from 'styled-components';
 
 export const Logo = styled.img`
     width: 10em;
-    margin: 5em 0;
+    margin-top: 5em;
+    margin-bottom: 2em;
 `;
-
+export const HeaderLabel = styled.h1`
+    margin-bottom: 4em;
+`;
 export const Container = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const Content = styled.div`
@@ -16,7 +20,6 @@ export const Content = styled.div`
     align-items: center;
     flex-direction: column;
 `;
-
 export const ShelfLine = styled.hr`
     width: 100%;
     margin-top: .7em;
@@ -27,6 +30,7 @@ export const ShelfLine = styled.hr`
 export const ShelfRow = styled.div`
     display: flex;
     width: 100%;
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: 10em;
     justify-content: space-between;
 `;
