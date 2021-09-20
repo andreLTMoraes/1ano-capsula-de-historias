@@ -24,7 +24,9 @@ function useOutsideAlerter(ref, action) {
 }
 
 export default function Modal({
-    closeModal = () => {}
+    closeModal = () => {},
+    url,
+    stories
 }) {
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, closeModal)
@@ -43,8 +45,8 @@ export default function Modal({
     }
 
     const handleList = (time) => {
-        if(selectedHistory + 1 < mock.stories.length) {
-            if(time >= mock.stories[selectedHistory + 1].beginAt) {
+        if(selectedHistory + 1 < stories.length) {
+            if(time >= stories[selectedHistory + 1].beginAt) {
                 setSelectedHistory(selectedHistory + 1)
             }
         }
@@ -55,7 +57,7 @@ export default function Modal({
             <S.PopUpContainer ref={wrapperRef}>
                 <S.StoriesList>
                     <ul style={{direction: 'ltr'}}>
-                        {mock.stories.map((history, idx) => {
+                        {stories.map((history, idx) => {
                             return (
                                 <li key={idx}>
                                     <S.StoriesItem actual={selectedHistory === idx} onClick={() => gotoHistory(history.beginAt, idx)}>
@@ -69,13 +71,13 @@ export default function Modal({
                 </S.StoriesList>
                 <S.HistoryContent>
                     <S.CardHeader>
-                        <S.CardHistoryTitle>{mock.stories[selectedHistory].name}</S.CardHistoryTitle>
-                        <S.CardHistoryAuthor>{mock.stories[selectedHistory].author}</S.CardHistoryAuthor>
+                        <S.CardHistoryTitle>{stories[selectedHistory].name}</S.CardHistoryTitle>
+                        <S.CardHistoryAuthor>{stories[selectedHistory].author}</S.CardHistoryAuthor>
                     </S.CardHeader>
                     <S.VideoConteiner>
                         <ReactPlayer
                             ref={player}
-                            url={`${mock.url}`}
+                            url={url}
                             controls={true}
                             width="83%"
                             height="90%"

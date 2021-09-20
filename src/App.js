@@ -7,15 +7,22 @@ import logo from './assets/logotypo.png'
 import Modal from './components/Modal/Modal';
 import Book from './components/Book/Book';
 import Footer from './components/Footer/Footer';
-import { onSnapshot, collection, doc, setDoc } from 'firebase/firestore';
+import { onSnapshot, collection, query, orderBy, getDocs, doc, setDoc } from 'firebase/firestore';
 
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [events, setEvents] = useState([])
+  const [videoUrl, setVideoUrl] = useState('')
+  const [stories, setStories] = useState([])
 
   const e10Ref = collection(firebase, 'events', '2020', 'E10')
 
-  function handleBookClick(){
+  console.log(stories);
+  async function handleBookClick(url, year, nameClass){
+    const q = query(collection(firebase, 'events', year, nameClass), orderBy("beginAt", "asc"))
+    const querySnapshot = await getDocs(q)
+    setStories(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    setVideoUrl(url)
     setShowModal(true)
   }
 
@@ -34,10 +41,6 @@ function App() {
       default:
         return 'yellow'
     }
-  }
-
-  function getStories(){
-
   }
 
   /*async function setStorie(){
@@ -60,7 +63,6 @@ function App() {
     await setDoc(doc(e10Ref), {author: 'Saulo Matias de Souza', name: 'Noite de acampamento', beginAt: 2233})
   }*/
 
-    console.log(events);
   useEffect(() => 
     onSnapshot(collection(firebase, 'events'), (snapshot) => 
       setEvents(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
@@ -69,7 +71,7 @@ function App() {
 
   return (
     <S.Container>
-      {showModal && <Modal closeModal={() => setShowModal(false)}/>}
+      {showModal && <Modal closeModal={() => setShowModal(false)} url={videoUrl} stories={stories}/>}
       <S.Content>
         <S.Logo src={logo} alt="Colégio Geração Ativa"/>
         <S.HeaderLabel>Nossas historinhas contadas do nosso jeito!</S.HeaderLabel>
@@ -79,27 +81,11 @@ function App() {
             <S.ShelfLine/>
             <S.ShelfRow>
               {event.classes.map((book, idx) => (
-                <Book year='1º ano' classCode={book.name} hardcoverColor={getColor(idx)} bookClick={() => handleBookClick()}/>
+                <Book year='1º ano' classCode={book.name} hardcoverColor={getColor(idx)} bookClick={() => handleBookClick(book.url, event.id, book.name)}/>
               ))}
             </S.ShelfRow>
           </>
         ))}
-        {/*<h2>2021</h2>
-        <S.ShelfLine/>
-        <S.ShelfRow>
-          <Book year='1º ano' classCode='E10' hardcoverColor='yellow' bookClick={() => handleBookClick()}/>
-          <Book year='1º ano' classCode='E11' hardcoverColor='blue'/>
-          <Book year='1º ano' classCode='E20' hardcoverColor='red'/>
-          <Book year='1º ano' classCode='E21' hardcoverColor='green'/>
-        </S.ShelfRow>
-        <h2>2020</h2>
-        <S.ShelfLine/>
-        <S.ShelfRow>
-          <Book year='1º ano' classCode='E10' hardcoverColor='green' bookClick={() => handleBookClick()}/>
-          <Book year='1º ano' classCode='E11' hardcoverColor='red'/>
-          <Book year='1º ano' classCode='E20' hardcoverColor='yellow'/>
-          <Book year='1º ano' classCode='E21' hardcoverColor='blue'/>
-        </S.ShelfRow>*/}
       </S.Content>
       <Footer/>
     </S.Container>
