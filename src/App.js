@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import firebase from './Firebase'
 import * as S from './styled'
 
-import logo from './assets/logotypo.png'
-
+import Header from './components/Header/Header'
 import Modal from './components/Modal/Modal';
 import Book from './components/Book/Book';
 import Footer from './components/Footer/Footer';
@@ -72,9 +71,8 @@ function App() {
   return (
     <S.Container>
       {showModal && <Modal closeModal={() => setShowModal(false)} url={videoUrl} stories={stories}/>}
+      <Header/>
       <S.Content>
-        <S.Logo src={logo} alt="Colégio Geração Ativa"/>
-        <S.HeaderLabel>Nossas historinhas contadas do nosso jeito!</S.HeaderLabel>
         {events.map((event) => (
           <>
             <h2>{event.id}</h2>

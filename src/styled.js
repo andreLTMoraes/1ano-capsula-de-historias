@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const Logo = styled.img`
-    width: 10em;
-    margin-top: 5em;
-    margin-bottom: 2em;
-`;
-export const HeaderLabel = styled.h1`
-    margin-bottom: 4em;
-`;
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -33,4 +25,12 @@ export const ShelfRow = styled.div`
     margin-top: 1.5rem;
     margin-bottom: 10em;
     justify-content: space-between;
+
+    &&:before {
+        content: '';
+    }
+
+    &&:after {
+        content: '';
+    }
 `;

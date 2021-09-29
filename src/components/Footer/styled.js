@@ -3,9 +3,8 @@ import styled from "styled-components"
 export const Container = styled.div`
     display: flex;
     background-color: #1e5598;
-    margin-top: 2em;
+    margin-top: 6em;
     width: 100%;
-    height: 3em;
     justify-content: center;
 `;
 
@@ -15,20 +14,30 @@ export const Content = styled.div`
 `;
 
 export const Info = styled.div`
-
+    padding: 4em 0;
+    width: 50%;
+    justify-content: center;
+    display: flex;
 `;
 
 export const P = styled.p`
-    color: #073C5F;
+    color: #fff;
+    font-size: 1.5em;
 `;
 
 export const UpperP = styled.p`
     color: #fff;
-    font-size: 14px;
+    font-size: 1.8em;
     font-weight: 900;
     text-transform: uppercase;
+    margin-bottom: .5em;
 `;
 
 export const Book = styled.div`
+    position: relative;
+    width: 50%
+`;
 
+export const A = styled.a`
+    
 `;
