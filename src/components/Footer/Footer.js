@@ -11,7 +11,7 @@ export default function Footer() {
                     <div>
                         <S.UpperP>Colégio Geração Ativa</S.UpperP>
                         <S.P>R. Gomes Taborda, 1826 - Cordeiro, Recife - PE</S.P>
-                        <S.A href='http://www.geracaoativa.com.br/' target='_blank'><S.P>geracaoativa.com.br</S.P></S.A>
+                        <a href='http://www.geracaoativa.com.br/' target='_blank'><S.P>geracaoativa.com.br</S.P></a>
                         <S.P>(81) 3445-2190</S.P>
                     </div>
                 </S.Info>

@@ -54,8 +54,8 @@ export const TextRight = styled.p`
 export const Card = styled.div`
     color: #013243;
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: 30%;
+	left: 75%;
 	width: 200px;
 	height: 268px;
 	background: #e0e1dc;
@@ -101,5 +101,10 @@ export const Card = styled.div`
         background: #92A29C;
         transform-origin: left;
         transform: skewY(-45deg);
+    }
+
+    @media screen and (max-width: 767px) {
+        top: 18%;
+        left: 50%;
     }
 `;

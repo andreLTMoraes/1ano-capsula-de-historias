@@ -22,16 +22,26 @@ export const Logo = styled.img`
 
 export const HeaderLabel = styled.h1`
     margin-bottom: 4em;
+    text-align: center;
 `;
 
 export const Cloud1 = styled.img`
     position: absolute;
     top: 4%;
     left: 13%;
+
+    @media screen and (max-width: 1023px) {
+        width: 5.5em;
+        left: 20%;
+    }
 `;
 
 export const Cloud2 = styled.img`
     position: absolute;
     top: 13%;
     right: 15%;
+
+    @media screen and (max-width: 1023px) {
+        width: 7em;
+    }
 `;

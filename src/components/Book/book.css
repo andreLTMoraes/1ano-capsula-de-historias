@@ -473,17 +473,22 @@ a {
 	background-image: linear-gradient(top, #47db34 58%, #46d42a 0%);
 }
 
-/* Media Queries */
-@media screen and (max-width: 37.8125em) {
-	.align > li {
-		width: 100%;
-		min-height: 440px;
-		height: auto;
-		padding: 0;
-		margin: 0 0 30px 0;
-	}
+.book-col {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 3em;
+}
 
-	.book {
-		margin: 0 auto;
+/* Media Queries */
+@media screen and (max-width: 1023px) {
+	.book-col {
+		flex-basis: 50%;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.book-col {
+		flex-basis: 100%;
 	}
 }

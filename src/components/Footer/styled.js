@@ -10,19 +10,29 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 80%;
+    position: relative;
 `;
 
 export const Info = styled.div`
-    padding: 4em 0;
+    padding-top: 4em;
+    padding-bottom: 4em;
     width: 50%;
     justify-content: center;
     display: flex;
+
+    @media screen and (max-width: 767px) {
+        padding-top: 20em;
+        flex-basis: 100%;
+    }
 `;
 
 export const P = styled.p`
     color: #fff;
     font-size: 1.5em;
+    line-height: 1.7em;
 `;
 
 export const UpperP = styled.p`
@@ -34,10 +44,9 @@ export const UpperP = styled.p`
 `;
 
 export const Book = styled.div`
-    position: relative;
-    width: 50%
-`;
+    width: 50%;
 
-export const A = styled.a`
-    
+    @media screen and (max-width: 767px) {
+        flex-basis: 100%;
+    }
 `;

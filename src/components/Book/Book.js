@@ -9,7 +9,7 @@ export default function Book({
     bookClick = () => {}
 }) {
     return (
-        <div>
+        <div className='book-col'>
             <figure className='book'>
 
                 <ul className='hardcover_front'>

@@ -15,13 +15,14 @@ export const Content = styled.div`
 export const ShelfLine = styled.hr`
     width: 100%;
     margin-top: .7em;
-    margin-bottom: 3em;
     border: 2px solid #214f6d;
 `;
 
 export const ShelfRow = styled.div`
     display: flex;
     width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 1.5rem;
     margin-bottom: 10em;
     justify-content: space-between;
