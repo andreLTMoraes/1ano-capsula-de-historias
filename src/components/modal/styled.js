@@ -20,6 +20,10 @@ export const PopUpContainer = styled.div`
     position: relative;
     padding: 2rem 1rem 1rem 1rem;
     z-index: 15;
+
+    @media screen and (max-width: 1023px) {
+        flex-direction: column-reverse;
+    }
 `;
 export const StoriesList = styled.div`
     width: 30%;
@@ -37,6 +41,11 @@ export const StoriesList = styled.div`
         background-color: #ddd;
         border-radius: 10px;
     }
+
+    @media screen and (max-width: 1023px) {
+        width: 100%;
+        height: 35%;
+    }
 `;
 export const StoriesItem = styled.div`
     background-color: ${props => (props.actual ? '#fff' : 'none')};
@@ -47,33 +56,58 @@ export const StoriesItem = styled.div`
     border-top: #ccc solid 1px;
     height: 4em;
     justify-content: center;
+
+    @media screen and (max-width: 767px) {
+        padding: 0 .5em;
+        height: 3.5em;
+    }
 `;
 export const HistoryContent = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
+
+    @media screen and (max-width: 1023px) {
+        height: 75%;
+    }
 `;
 export const HistoryTitle = styled.p`
     color: ${props => (props.actual ? '#f79f00' : '#969696')};
     font-weight: 800;
     margin-bottom: 8px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 1em;
+    }
 `;
 export const HistoryAuthor = styled.p`
     color: ${props => (props.actual ? '#f79f00' : '#969696')};
     font-weight: 600;
     margin-bottom: 8px;
+
+    @media screen and (max-width: 767px) {
+        font-size: .8em;
+    }
 `;
 export const CardHistoryTitle = styled.p`
     color: #073C5F;
     font-weight: 800;
     margin-bottom: 8px;
     font-size: 1.7em;
+
+    @media screen and (max-width: 767px) {
+        font-size: 1.3em;
+    }
 `;
 export const CardHistoryAuthor = styled.p`
     color: #073C5F;
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 1.4em;
+
+    @media screen and (max-width: 767px) {
+        font-size: 1em;
+    }
 `;
 export const CardHeader = styled.div`
     display: flex;
